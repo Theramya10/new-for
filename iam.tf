@@ -19,7 +19,7 @@ resource "aws_s3_bucket_policy" "bucket_policy" {
         Effect    = "Allow",
         Principal = { AWS = aws_cloudfront_origin_access_identity.oai.iam_arn },
         Action    = "s3:GetObject",
-        Resource  = "${data.aws_s3_bucket.existing_bucket.arn}/*"
+        Resource  = "${data.aws_s3_bucket.existing_bucket.arn}/My1stWEB/*"
       }
     ]
   })
