@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git branch: 'master', url: 'https://github.com/Theramya10/mystatic-WEB.git'
+                git branch: 'main', url: 'https://github.com/Theramya10/new-for.git'
             }
         }
 
