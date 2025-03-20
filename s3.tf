@@ -3,7 +3,7 @@ resource "aws_s3_bucket" "website_bucket" {
 }
 
 resource "aws_s3_bucket_versioning" "versioning" {
-  bucket = aws_s3_bucket.website_bucket.id
+  bucket = aws_s3_bucket.theramya10.id
   versioning_configuration {
     status = "Enabled"
   }
