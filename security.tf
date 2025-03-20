@@ -1,5 +1,5 @@
 resource "aws_security_group" "sg" {
-  vpc_id = aws_vpc.main_vpc.id
+  vpc_id = aws_vpc.jenkins-project-day7.id
 
   ingress {
     from_port   = 80
