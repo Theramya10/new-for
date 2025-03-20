@@ -1,7 +1,8 @@
+# Create CloudFront Distribution
 resource "aws_cloudfront_distribution" "cdn" {
   origin {
-    domain_name = aws_s3_bucket.theramya10.bucket_regional_domain_name
-    origin_id   = "S3-${aws_s3_bucket.theramya10.id}"
+    domain_name = data.aws_s3_bucket.existing_bucket.bucket_regional_domain_name
+    origin_id   = "S3-${data.aws_s3_bucket.existing_bucket.id}"
 
     s3_origin_config {
       origin_access_identity = aws_cloudfront_origin_access_identity.oai.cloudfront_access_identity_path
@@ -14,7 +15,7 @@ resource "aws_cloudfront_distribution" "cdn" {
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD"]
     cached_methods   = ["GET", "HEAD"]
-    target_origin_id = "S3-${aws_s3_bucket.theramya10.id}"
+    target_origin_id = "S3-${data.aws_s3_bucket.existing_bucket.id}"
 
     forwarded_values {
       query_string = false
@@ -33,6 +34,6 @@ resource "aws_cloudfront_distribution" "cdn" {
   }
 
   viewer_certificate {
-    cloudfront_default_certificate = true  # Default SSL certificate
+    cloudfront_default_certificate = true  # Using default SSL certificate
   }
 }
